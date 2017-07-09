@@ -15,10 +15,11 @@
       <option name="PHP String Literal" value="false" />
     </context>
   </template>
-  <template name="ansible-download-and-checksum" value="- name: Download file&#10;  get_url: url=&quot;$source_url$&quot; mode=0644 validate_certs=false&#10;  args:&#10;      dest: /tmp/$file_name$&#10;&#10;- name: Create sha256sum file&#10;  shell: &quot;echo \&quot;{{ $var_name$_sha256 }}  $file_name$\&quot; &gt; $file_name$.sha256&quot;&#10;  args:&#10;    chdir: /tmp&#10;&#10;- name: Perform sha256sum&#10;  shell: sha256sum $file_name$.sha256 -c&#10;  args:&#10;    chdir: /tmp&#10;&#10;" description="Create tasks to download and check a file" toReformat="false" toShortenFQNames="true">
-    <variable name="source_url" expression="" defaultValue="" alwaysStopAt="true" />
-    <variable name="file_name" expression="" defaultValue="" alwaysStopAt="true" />
-    <variable name="var_name" expression="" defaultValue="" alwaysStopAt="true" />
+  <template name="ansible-download-and-checksum" value="- name: Download file&#10;  get_url: url=&quot;$source_url$&quot; mode=&quot;u=rw,g=r,o=r&quot; validate_certs=true&#10;  args:&#10;      dest: /tmp/$file_name$&#10;&#10;- name: Create sha256sum file&#10;  shell: &quot;echo \&quot;{{ $var_name$_sha256 }}  $file_name$\&quot; &gt; $file_name$.sha256&quot;&#10;  args:&#10;    chdir: /tmp&#10;&#10;- name: Perform sha256sum&#10;  shell: sha256sum $file_name$.sha256 -c&#10;  args:&#10;    chdir: /tmp&#10;&#10;- name: Move &#10;  shell: mv /tmp/$file_name$ $destination_path$" description="Create tasks to download and check a file" toReformat="false" toShortenFQNames="true">
+    <variable name="source_url" expression="" defaultValue="&quot;source&quot;" alwaysStopAt="true" />
+    <variable name="file_name" expression="" defaultValue="&quot;file&quot;" alwaysStopAt="true" />
+    <variable name="var_name" expression="" defaultValue="&quot;var&quot;" alwaysStopAt="true" />
+    <variable name="destination_path" expression="" defaultValue="&quot;destination&quot;" alwaysStopAt="true" />
     <context>
       <option name="OTHER" value="true" />
     </context>
