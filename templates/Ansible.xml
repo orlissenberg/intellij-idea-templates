@@ -1,0 +1,26 @@
+<templateSet group="Ansible">
+  <template name="ansible-template" value="$doc$&#10;- name: $name$&#10;  template:&#10;    src: $source$.j2&#10;    dest: $destination$&#10;    owner: $owner$&#10;    group: $group$&#10;    mode: &quot;u=rw,g=rw,o=r&quot;" description="Create an ansible template task" toReformat="false" toShortenFQNames="true">
+    <variable name="doc" expression="" defaultValue="&quot;# http://docs.ansible.com/ansible/template_module.html&quot;" alwaysStopAt="true" />
+    <variable name="name" expression="" defaultValue="&quot;Name&quot;" alwaysStopAt="true" />
+    <variable name="source" expression="" defaultValue="&quot;source&quot;" alwaysStopAt="true" />
+    <variable name="destination" expression="" defaultValue="&quot;destination&quot;" alwaysStopAt="true" />
+    <variable name="owner" expression="" defaultValue="&quot;root&quot;" alwaysStopAt="true" />
+    <variable name="group" expression="" defaultValue="&quot;root&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+      <option name="PHP Class Member" value="false" />
+      <option name="PHP Comment" value="false" />
+      <option name="PHP Expression" value="false" />
+      <option name="PHP Statement" value="false" />
+      <option name="PHP String Literal" value="false" />
+    </context>
+  </template>
+  <template name="ansible-download-and-checksum" value="- name: Download file&#10;  get_url: url=&quot;$source_url$&quot; mode=0644 validate_certs=false&#10;  args:&#10;      dest: /tmp/$file_name$&#10;&#10;- name: Create sha256sum file&#10;  shell: &quot;echo \&quot;{{ $var_name$_sha256 }}  $file_name$\&quot; &gt; $file_name$.sha256&quot;&#10;  args:&#10;    chdir: /tmp&#10;&#10;- name: Perform sha256sum&#10;  shell: sha256sum $file_name$.sha256 -c&#10;  args:&#10;    chdir: /tmp&#10;&#10;" description="Create tasks to download and check a file" toReformat="false" toShortenFQNames="true">
+    <variable name="source_url" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="file_name" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="var_name" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+</templateSet>
