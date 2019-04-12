@@ -24,4 +24,21 @@
       <option name="OTHER" value="true" />
     </context>
   </template>
+  <template name="ansible-apt" value="$doc$&#10;- name: Add package&#10;  apt:&#10;    # foo=1.00 for a specific version or deb: /tmp/foo.deb to install a debian package&#10;    name: $name$&#10;    state: $state$&#10;    # purge: yes (optional: if state is set to absent)&#10;    update_cache: no" description="Create apt task" toReformat="false" toShortenFQNames="true">
+    <variable name="doc" expression="" defaultValue="&quot;# http://docs.ansible.com/ansible/apt_module.html&quot;" alwaysStopAt="true" />
+    <variable name="name" expression="" defaultValue="&quot;foo&quot;" alwaysStopAt="true" />
+    <variable name="state" expression="" defaultValue="&quot;present&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
+  <template name="ansible-service" value="$doc$&#10;- name: $description$&#10;  service:&#10;    name: $name$&#10;    state: $state$" description="Create service task" toReformat="false" toShortenFQNames="true">
+    <variable name="doc" expression="" defaultValue="&quot;# http://docs.ansible.com/ansible/service_module.html&quot;" alwaysStopAt="true" />
+    <variable name="description" expression="" defaultValue="&quot;description&quot;" alwaysStopAt="true" />
+    <variable name="name" expression="" defaultValue="&quot;name&quot;" alwaysStopAt="true" />
+    <variable name="state" expression="" defaultValue="&quot;restarted&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="OTHER" value="true" />
+    </context>
+  </template>
 </templateSet>
